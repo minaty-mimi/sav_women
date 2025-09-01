@@ -10,8 +10,7 @@ import Blog from "./pages/Blog";
 import Resources from "./pages/Resources";
 import Events from "./pages/Events";
 import TodoApp from "./pages/TodoApp";
-import Team from "./pages/Team";
-import JoinCommunity from "./pages/JoinCommunity";
+import Onboarding from "./pages/Onboarding";
 import Privacy from "./pages/Privacy";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
@@ -30,11 +29,10 @@ const App = () => {
               <Route path="/" element={<Index />} />
               <Route path="/about" element={<About />} />
               <Route path="/blog" element={<Blog />} />
-              <Route path="/join-community" element={<JoinCommunity />} />
-              <Route path="/team" element={<Team />} />
               <Route path="/resources" element={<Resources />} />
               <Route path="/events" element={<Events />} />
               <Route path="/tools/todo" element={<TodoApp />} />
+              <Route path="/join" element={<Onboarding />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="*" element={<NotFound />} />

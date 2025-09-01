@@ -11,8 +11,7 @@ const NavigationUpdated: React.FC = () => {
   const navItems = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Community', href: '/join-community' },
-    { name: 'Team', href: '/team' },
+    { name: 'Todo App', href: '/tools/todo' },
     { name: 'Blog', href: '/blog' },
     { name: 'Resources', href: '/resources' },
     { name: 'Events', href: '/events' }
@@ -90,7 +89,7 @@ const NavigationUpdated: React.FC = () => {
           </div>
 
           <div className="hidden lg:flex items-center ml-4">
-            <Link to="/join-community">
+            <Link to="/join">
               <Button
                 className={cn(
                   "relative overflow-hidden group bg-gradient-to-r from-green-600 to-green-700",
@@ -165,7 +164,7 @@ const NavigationUpdated: React.FC = () => {
               </Link>
             ))}
             <div className="pt-4 border-t border-gray-100">
-              <Link to="/join-community" onClick={() => setIsOpen(false)}>
+              <Link to="/join" onClick={() => setIsOpen(false)}>
                 <Button className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-semibold relative overflow-hidden group">
                   <span className="relative z-10">Join Us</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-green-700 to-green-800 transition-transform duration-300 transform translate-x-full group-hover:translate-x-0" />

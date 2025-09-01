@@ -9,15 +9,13 @@ const Navigation: React.FC = () => {
   const primaryNavItems = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Join Our Community', href: '/join-community' },
+    { name: 'Todo App', href: '/tools/todo' },
   ];
 
   const secondaryNavItems = [
-    { name: 'Events', href: '/events' },
-    { name: 'Resources', href: '/resources' },
     { name: 'Blog', href: '/blog' },
-    { name: 'Meet Our Team', href: '/team' },
-    { name: 'Todo App', href: '/tools/todo' }
+    { name: 'Resources', href: '/resources' },
+    { name: 'Events', href: '/events' }
   ];
 
   const allNavItems = [...primaryNavItems, ...secondaryNavItems];

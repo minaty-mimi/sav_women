@@ -45,10 +45,6 @@ const About: React.FC = () => {
           </div>
 
           <PageHero 
-            badge={{
-              text: "Our Story",
-              icon: <Users className="w-4 h-4" />
-            }}
             title={{
               main: "About",
               highlight: "SAV WOMEN"

@@ -147,10 +147,6 @@ const Resources: React.FC = () => {
           </div>
 
           <PageHero 
-            badge={{
-              text: "Knowledge Hub",
-              icon: <Book className="w-4 h-4" />
-            }}
             title={{
               main: "Resource",
               highlight: "Directory"

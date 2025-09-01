@@ -68,13 +68,13 @@ const SAVWomenCarousel: React.FC = () => {
   ];
 
   return (
-    <section className="h-screen flex items-center bg-white">
+    <section className="min-h-screen py-16 md:py-24 flex items-center bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
             SAV WOMEN Initiative
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">
             Discover the core pillars that drive our mission to empower young women and create lasting change
           </p>
         </div>
@@ -89,15 +89,15 @@ const SAVWomenCarousel: React.FC = () => {
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          <CarouselContent className="-ml-2 md:-ml-4">
+          <CarouselContent className="-ml-2 sm:-ml-4">
             {carouselItems.map((item, index) => (
-              <CarouselItem key={index} className="pl-4 md:pl-6 md:basis-1/2 lg:basis-1/3">
+              <CarouselItem key={index} className="pl-2 sm:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
                 <Card className="h-full">
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                  <CardContent className="p-4 sm:p-6">
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 sm:mb-3">
                       {item.title}
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-sm sm:text-base text-gray-600">
                       {item.description}
                     </p>
                   </CardContent>
@@ -105,15 +105,15 @@ const SAVWomenCarousel: React.FC = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="left-4" />
-          <CarouselNext className="right-4" />
+          <CarouselPrevious className="hidden sm:flex -left-4 sm:left-0 lg:left-4" />
+          <CarouselNext className="hidden sm:flex -right-4 sm:right-0 lg:right-4" />
         </Carousel>
 
-        <div className="text-center mt-12">
-          <p className="text-lg text-gray-900 font-semibold">
+        <div className="text-center mt-8 sm:mt-12">
+          <p className="text-base sm:text-lg text-gray-900 font-semibold">
             SAV WOMEN - Sound and Vibrant Women Initiative
           </p>
-          <p className="text-gray-600 mt-2">
+          <p className="text-sm sm:text-base text-gray-600 mt-2">
             Empowering young women and inspiring change since 2024
           </p>
         </div>

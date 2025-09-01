@@ -9,22 +9,8 @@ const SuccessStories: React.FC = () => {
       name: 'Amina Mustapha',
       role: 'Founder & CEO',
       quote: 'I founded SAV WOMEN with a vision to empower young women and create lasting positive change in our communities. Together, we\'re building a future where every woman can achieve her dreams.',
-      image: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=200&h=200&fit=crop&crop=face',
+      image: '/founder.png',
       achievements: ['500+ Women Empowered', '10+ Programs Launched', 'Community Impact Award']
-    },
-    {
-      name: 'Diana Moses',
-      role: 'Program Director',
-      quote: 'I lead our programs and initiatives, ensuring every woman has access to the resources and support she needs to thrive. Our community grows stronger every day.',
-      image: '/light skined.png',
-      achievements: ['Program Excellence', 'Mentorship Leader', 'Innovation Award']
-    },
-    {
-      name: 'Halima Isa',
-      role: 'Community Outreach',
-      quote: 'I connect with communities and build partnerships to expand our reach and impact across different regions. Together, we\'re creating global change.',
-      image: '/muslim.png',
-      achievements: ['Global Partnerships', 'Community Builder', 'Outreach Excellence']
     }
   ];
 
@@ -32,50 +18,53 @@ const SuccessStories: React.FC = () => {
     <div className="w-full min-h-screen bg-white py-16">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <Badge variant="secondary" className="mb-4 bg-neutral-100 text-neutral-900 px-4 py-1 text-sm font-semibold">
-            Meet Our Team
-          </Badge>
           <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">
-            The Visionaries Behind SAV WOMEN
+            Meet Our Founder
           </h2>
           <p className="text-base text-neutral-600 max-w-2xl mx-auto">
-            Meet our leaders driving change with passion and dedication.
+            The visionary leader behind SAV WOMEN
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+        <div className="max-w-6xl mx-auto">
           {stories.map((story, index) => (
-            <Card key={index} className="bg-white shadow-md hover:shadow-lg transition-shadow">
-              <CardContent className="p-6 text-center">
-                <div className="mb-4">
-                  <div className="w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-neutral-200">
+            <Card key={index} className="bg-white shadow-lg hover:shadow-xl transition-shadow overflow-hidden">
+              <CardContent className="p-0">
+                <div className="grid md:grid-cols-2 gap-0">
+                  {/* Image Section */}
+                  <div className="relative w-full aspect-[4/3] md:aspect-auto md:h-full group">
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-600/10 to-teal-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
                     <img
                       src={story.image}
                       alt={story.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
-                </div>
 
-                <h3 className="text-lg font-bold text-neutral-900 mb-2">
-                  {story.name}
-                </h3>
+                  {/* Content Section */}
+                  <div className="p-8 md:p-10 flex flex-col justify-center">
+                    <Badge variant="outline" className="mb-4 self-start bg-neutral-50 text-neutral-800 border-neutral-200 px-3 py-1 text-sm font-medium">
+                      {story.role}
+                    </Badge>
 
-                <Badge variant="outline" className="mb-3 bg-neutral-50 text-neutral-800 border-neutral-200 px-3 py-0.5 text-xs font-medium">
-                  {story.role}
-                </Badge>
+                    <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-4">
+                      {story.name}
+                    </h3>
 
-                <p className="text-neutral-600 text-sm mb-4 italic">
-                  "{story.quote}"
-                </p>
+                    <p className="text-neutral-600 text-base md:text-lg mb-8 italic leading-relaxed">
+                      "{story.quote}"
+                    </p>
 
-                <div className="space-y-2">
-                  {story.achievements.map((achievement, achievementIndex) => (
-                    <div key={achievementIndex} className="flex items-center justify-center gap-2 text-sm text-neutral-600">
-                      <Award className="w-4 h-4 text-neutral-400" />
-                      <span>{achievement}</span>
+                    <div className="space-y-4">
+                      {story.achievements.map((achievement, achievementIndex) => (
+                        <div key={achievementIndex} className="flex items-center gap-3 text-neutral-600">
+                          <Award className="w-5 h-5 text-green-600 flex-shrink-0" />
+                          <span className="text-base">{achievement}</span>
+                        </div>
+                      ))}
                     </div>
-                  ))}
+                  </div>
                 </div>
               </CardContent>
             </Card>
