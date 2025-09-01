@@ -6,7 +6,7 @@ import { Award, Users } from 'lucide-react';
 const SuccessStories: React.FC = () => {
   const stories = [
     {
-      name: 'Amara Johnson',
+      name: 'Amina Mustapha',
       role: 'Founder & CEO',
       quote: 'I founded SAV WOMEN with a vision to empower young women and create lasting positive change in our communities. Together, we\'re building a future where every woman can achieve her dreams.',
       image: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=200&h=200&fit=crop&crop=face',
