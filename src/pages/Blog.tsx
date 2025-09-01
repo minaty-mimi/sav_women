@@ -22,7 +22,7 @@ const Blog: React.FC = () => {
       title: 'Building Confidence in Your Career Journey',
       excerpt: 'Discover practical strategies to overcome imposter syndrome and build lasting confidence in your professional life.',
       category: 'Career',
-      author: 'Sarah Johnson',
+      author: 'Amina Mustapha',
       date: '2024-01-15',
       image: '/placeholder.svg',
       readTime: '5 min read'

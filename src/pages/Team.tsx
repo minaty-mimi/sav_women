@@ -14,7 +14,7 @@ import {
 const Team: React.FC = () => {
   const teamMembers = [
     {
-      name: 'Sarah Johnson',
+      name: 'Amina Mustapha',
       role: 'Founder & CEO',
       image: '/light%20skined.png',
       bio: 'Passionate about empowering women through education and mentorship.',
