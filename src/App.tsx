@@ -7,11 +7,11 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Blog from "./pages/Blog";
-import Community from "./pages/Community";
 import Resources from "./pages/Resources";
 import Events from "./pages/Events";
 import TodoApp from "./pages/TodoApp";
-import Join from "./pages/Join";
+import Team from "./pages/Team";
+import JoinCommunity from "./pages/JoinCommunity";
 import Privacy from "./pages/Privacy";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
@@ -30,11 +30,11 @@ const App = () => {
               <Route path="/" element={<Index />} />
               <Route path="/about" element={<About />} />
               <Route path="/blog" element={<Blog />} />
-              <Route path="/community" element={<Community />} />
+              <Route path="/join-community" element={<JoinCommunity />} />
+              <Route path="/team" element={<Team />} />
               <Route path="/resources" element={<Resources />} />
               <Route path="/events" element={<Events />} />
               <Route path="/tools/todo" element={<TodoApp />} />
-              <Route path="/join" element={<Join />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="*" element={<NotFound />} />

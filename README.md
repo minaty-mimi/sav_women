@@ -1,3 +1,7 @@
-# React + TypeScript + Vite
+# SAV WOMEN Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Technology Stack
+- React + TypeScript + Vite
+- Tailwind CSS for styling
+- Radix UI components for accessibility
+- Lucide React for icons

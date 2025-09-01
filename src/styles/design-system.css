@@ -1,0 +1,98 @@
+:root {
+  /* Primary Colors */
+  --color-primary-50: #f0f9f6;
+  --color-primary-100: #d0e9e3;
+  --color-primary-200: #a3d5ca;
+  --color-primary-300: #76c0b1;
+  --color-primary-400: #4aac98;
+  --color-primary-500: #1d977f;
+  --color-primary-600: #167a66;
+  --color-primary-700: #0f5c4d;
+  --color-primary-800: #083f34;
+  --color-primary-900: #02211b;
+
+  /* Accent Colors */
+  --color-accent-50: #fff8e6;
+  --color-accent-100: #feefc4;
+  --color-accent-200: #fce5a2;
+  --color-accent-300: #fbdb80;
+  --color-accent-400: #fad15e;
+  --color-accent-500: #f9c73c;
+  --color-accent-600: #c79f30;
+  --color-accent-700: #957724;
+  --color-accent-800: #634f18;
+  --color-accent-900: #31280c;
+
+  /* Neutral Colors */
+  --color-neutral-50: #f8fafc;
+  --color-neutral-100: #f1f5f9;
+  --color-neutral-200: #e2e8f0;
+  --color-neutral-300: #cbd5e1;
+  --color-neutral-400: #94a3b8;
+  --color-neutral-500: #64748b;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1e293b;
+  --color-neutral-900: #0f172a;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* Modern Container Widths */
+.container-sm { max-width: 640px; }
+.container-md { max-width: 768px; }
+.container-lg { max-width: 1024px; }
+.container-xl { max-width: 1280px; }
+
+/* Professional Card Styles */
+.card-elegant {
+  background: white;
+  border: 1px solid var(--color-neutral-200);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+}
+
+.card-elegant:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* Button Styles */
+.button-primary {
+  background: linear-gradient(to right, var(--color-primary-600), var(--color-primary-500));
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-full);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.button-primary:hover {
+  background: linear-gradient(to right, var(--color-primary-700), var(--color-primary-600));
+  transform: translateY(-1px);
+}
+
+/* Section Spacing */
+.section-spacing {
+  padding-top: var(--spacing-3xl);
+  padding-bottom: var(--spacing-3xl);
+}

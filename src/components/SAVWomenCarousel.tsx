@@ -7,56 +7,74 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { Card, CardContent } from '@/components/ui/card';
-import { Users, Heart, Target, Award, Star, Globe } from 'lucide-react';
 
 const SAVWomenCarousel: React.FC = () => {
+  const [api, setApi] = React.useState<any>();
+  const intervalRef = React.useRef<number>();
+  const [isPaused, setIsPaused] = React.useState(false);
+
+  const startAutoplay = React.useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    intervalRef.current = window.setInterval(() => {
+      api?.scrollNext();
+    }, 3000);
+  }, [api]);
+
+  const stopAutoplay = React.useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+  }, []);
+
+  React.useEffect(() => {
+    if (!api || isPaused) {
+      return;
+    }
+
+    startAutoplay();
+
+    return () => {
+      stopAutoplay();
+    };
+  }, [api, isPaused, startAutoplay, stopAutoplay]);
+
   const carouselItems = [
     {
-      icon: Users,
       title: "Community Building",
-      description: "Creating a supportive network of empowered women who uplift and inspire each other.",
-      color: "bg-green-100 border-green-200"
+      description: "Creating a supportive network where women uplift and inspire each other through shared experiences and collaboration."
     },
     {
-      icon: Heart,
       title: "Empowerment",
-      description: "Building confidence and leadership skills in young women to create lasting positive change.",
-      color: "bg-pink-100 border-pink-200"
+      description: "Building confidence and leadership skills in young women through personalized mentorship and transformative workshops."
     },
     {
-      icon: Target,
       title: "Leadership Development",
-      description: "Providing tools and mentorship to develop the next generation of powerful women leaders.",
-      color: "bg-blue-100 border-blue-200"
+      description: "Providing tools and guidance to develop the next generation of powerful women leaders through structured programs."
     },
     {
-      icon: Award,
       title: "Excellence",
-      description: "Celebrating achievements and recognizing the brilliance of women in all fields.",
-      color: "bg-yellow-100 border-yellow-200"
+      description: "Celebrating achievements and recognizing the brilliance of women in all fields through awards and recognition programs."
     },
     {
-      icon: Star,
       title: "Innovation",
-      description: "Fostering creativity and innovative thinking to solve community challenges.",
-      color: "bg-purple-100 border-purple-200"
+      description: "Fostering creativity and innovative thinking to solve community challenges through collaborative initiatives."
     },
     {
-      icon: Globe,
       title: "Global Impact",
-      description: "Expanding our reach to support women across communities and create worldwide change.",
-      color: "bg-indigo-100 border-indigo-200"
+      description: "Expanding our reach to empower women across communities and create meaningful worldwide change through partnerships."
     }
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-r from-green-50 to-yellow-50">
+    <section className="h-screen flex items-center bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            <span className="text-green-800">SAV WOMEN</span> Initiative
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            SAV WOMEN Initiative
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Discover the core pillars that drive our mission to empower young women and create lasting change
           </p>
         </div>
@@ -66,20 +84,20 @@ const SAVWomenCarousel: React.FC = () => {
             align: "start",
             loop: true,
           }}
+          setApi={setApi}
           className="w-full max-w-5xl mx-auto"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
         >
           <CarouselContent className="-ml-2 md:-ml-4">
             {carouselItems.map((item, index) => (
-              <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                <Card className={`h-full border-2 ${item.color} hover:shadow-lg transition-shadow duration-300`}>
-                  <CardContent className="p-6 text-center">
-                    <div className="w-16 h-16 mx-auto mb-4 bg-white rounded-full flex items-center justify-center shadow-md">
-                      <item.icon className="w-8 h-8 text-green-800" />
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <CarouselItem key={index} className="pl-4 md:pl-6 md:basis-1/2 lg:basis-1/3">
+                <Card className="h-full">
+                  <CardContent className="p-6">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-3">
                       {item.title}
                     </h3>
-                    <p className="text-gray-700 leading-relaxed">
+                    <p className="text-gray-600">
                       {item.description}
                     </p>
                   </CardContent>
@@ -91,12 +109,12 @@ const SAVWomenCarousel: React.FC = () => {
           <CarouselNext className="right-4" />
         </Carousel>
 
-        <div className="text-center mt-8">
-          <p className="text-lg text-gray-600">
-            <span className="font-semibold text-green-800">SAV WOMEN</span> - Sound and Vibrant Women Initiative
+        <div className="text-center mt-12">
+          <p className="text-lg text-gray-900 font-semibold">
+            SAV WOMEN - Sound and Vibrant Women Initiative
           </p>
-          <p className="text-sm text-gray-500 mt-2">
-            Empowering young women to echo brilliance and inspiring change since 2024
+          <p className="text-gray-600 mt-2">
+            Empowering young women and inspiring change since 2024
           </p>
         </div>
       </div>

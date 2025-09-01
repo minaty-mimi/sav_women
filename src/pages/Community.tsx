@@ -60,7 +60,7 @@ const Community: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-yellow-50">
+    <div className="min-h-screen bg-white">
       <Navigation />
       
       <main className="pt-20 pb-16">
@@ -72,32 +72,36 @@ const Community: React.FC = () => {
 
           {/* Hero Section */}
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              Join Our <span className="text-green-800">Community</span>
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-              Connect with a supportive network of empowered women who are committed to 
-              growth, leadership, and making a positive impact in their communities.
+            <Badge variant="secondary" className="mb-4 bg-neutral-100 text-neutral-900 px-4 py-1 text-sm font-semibold">
+              Join Us
+            </Badge>
+            <h1 className="text-4xl font-bold text-neutral-900 mb-4">Community</h1>
+            <p className="text-lg text-neutral-600 max-w-2xl mx-auto mb-8">
+              Connect with a supportive network of empowered women committed to 
+              growth and leadership.
             </p>
-            <Button size="lg" className="bg-green-800 hover:bg-green-900">
-              Join the Alumni Circle <ArrowRight className="ml-2 h-4 w-4" />
+            <Button size="lg" className="bg-neutral-900 hover:bg-neutral-800 text-white">
+              Join the Community
             </Button>
           </div>
 
           {/* Program Benefits */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              Community Benefits
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-neutral-900 mb-2">
+                Community Benefits
+              </h2>
+              <p className="text-neutral-600">What you'll gain by joining our community</p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {benefits.map((benefit, index) => (
-                <Card key={index} className="text-center hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <benefit.icon className="h-12 w-12 text-green-800 mx-auto mb-4" />
-                    <CardTitle className="text-xl">{benefit.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600">{benefit.description}</p>
+                <Card key={index} className="bg-white shadow-md hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="w-12 h-12 rounded-lg bg-neutral-100 flex items-center justify-center mb-4">
+                      <benefit.icon className="w-6 h-6 text-neutral-600" />
+                    </div>
+                    <h3 className="text-lg font-bold text-neutral-900 mb-2">{benefit.title}</h3>
+                    <p className="text-neutral-600 text-sm">{benefit.description}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -106,28 +110,27 @@ const Community: React.FC = () => {
 
           {/* Alumni Highlights */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-              Alumni Success Stories
-            </h2>
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-neutral-900 mb-2">
+                Success Stories
+              </h2>
+              <p className="text-neutral-600">Hear from our community members</p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
               {alumni.map((person, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow">
-                  <CardHeader className="text-center">
-                    <div className="w-20 h-20 bg-gray-200 rounded-full mx-auto mb-4"></div>
-                    <CardTitle className="text-xl">{person.name}</CardTitle>
-                    <p className="text-green-800 font-medium">{person.role}</p>
-                    <Badge variant="outline" className="mt-2">
-                      Cohort {person.cohort}
-                    </Badge>
-                  </CardHeader>
-                  <CardContent>
+                <Card key={index} className="bg-white shadow-md hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
                     <div className="mb-4">
-                      <p className="text-sm font-medium text-gray-900 mb-1">Key Achievement:</p>
-                      <p className="text-sm text-gray-600">{person.achievement}</p>
+                      <h3 className="text-lg font-bold text-neutral-900">{person.name}</h3>
+                      <p className="text-sm text-neutral-600">{person.role}</p>
+                      <Badge variant="secondary" className="mt-2 bg-neutral-100 text-neutral-800">
+                        {person.cohort}
+                      </Badge>
                     </div>
-                    <blockquote className="text-sm text-gray-600 italic">
-                      "{person.quote}"
-                    </blockquote>
+                    <div className="border-t border-neutral-100 pt-4">
+                      <p className="text-sm text-neutral-600 mb-3 font-medium">{person.achievement}</p>
+                      <p className="text-sm text-neutral-600 italic">"{person.quote}"</p>
+                    </div>
                   </CardContent>
                 </Card>
               ))}
@@ -135,27 +138,29 @@ const Community: React.FC = () => {
           </div>
 
           {/* Private Area Teaser */}
-          <div className="bg-white rounded-lg shadow-lg p-8 text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Ready to Join Our Community?
-            </h2>
-            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Get access to our private WhatsApp groups, exclusive resources, monthly virtual meetups, 
-              and a supportive network of women who are committed to growth and empowerment.
-            </p>
-            <div className="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
-              <Link to="/join">
-                <Button size="lg" className="bg-green-800 hover:bg-green-900">
-                  Apply to Join
-                </Button>
-              </Link>
-              <Link to="/about">
-                <Button size="lg" variant="outline">
-                  Learn More
-                </Button>
-              </Link>
-            </div>
-          </div>
+          <Card className="bg-neutral-50 border-0 shadow-none">
+            <CardContent className="py-12 text-center">
+              <h2 className="text-3xl font-bold text-neutral-900 mb-4">
+                Ready to Join Our Community?
+              </h2>
+              <p className="text-neutral-600 mb-8 max-w-2xl mx-auto">
+                Get access to our private WhatsApp groups, exclusive resources, monthly virtual meetups, 
+                and a supportive network of women who are committed to growth and empowerment.
+              </p>
+              <div className="flex items-center justify-center gap-4">
+                <Link to="/join">
+                  <Button size="lg" className="bg-neutral-900 hover:bg-neutral-800 text-white">
+                    Apply to Join
+                  </Button>
+                </Link>
+                <Link to="/about">
+                  <Button size="lg" variant="outline" className="border-neutral-300 hover:bg-neutral-100">
+                    Learn More
+                  </Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </main>
 

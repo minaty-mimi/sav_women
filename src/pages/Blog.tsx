@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import Navigation from '@/components/Navigation';
+import Navigation from '@/components/NavigationUpdated';
 import Footer from '@/components/Footer';
 import BackButton from '@/components/BackButton';
+import PageHero from '@/components/ui/page-hero';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Search, Calendar, User } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { Search, Calendar, BookOpen, User } from 'lucide-react';
 
 const Blog: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -75,37 +77,42 @@ const Blog: React.FC = () => {
             <BackButton />
           </div>
 
-          {/* Hero Section */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              Empowerment <span className="text-green-800">Blog</span>
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Insights, stories, and practical advice to support your journey of growth and empowerment.
-            </p>
-          </div>
+          <PageHero 
+            title={{
+              main: "Blog",
+              highlight: "Stories & Insights"
+            }}
+            description="Discover inspiring stories, practical advice, and expert insights to support your journey of growth and empowerment."
+          />
 
           {/* Search and Filter */}
-          <div className="mb-8 space-y-4 md:space-y-0 md:flex md:items-center md:justify-between">
-            <div className="relative max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-              <Input
-                type="text"
-                placeholder="Search articles..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10"
-              />
+          <div className="mb-12">
+            <div className="max-w-2xl mx-auto mb-8">
+              <div className="relative">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                <Input
+                  type="text"
+                  placeholder="Search articles..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-12 py-6 text-lg bg-white/80 backdrop-blur-sm hover:bg-white focus:bg-white transition-all duration-300 rounded-2xl shadow-lg"
+                />
+              </div>
             </div>
             
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap justify-center gap-2">
               {categories.map((category) => (
                 <Button
                   key={category}
                   variant={selectedCategory === category ? 'default' : 'outline'}
-                  size="sm"
+                  size="lg"
                   onClick={() => setSelectedCategory(category)}
-                  className={selectedCategory === category ? 'bg-green-800 hover:bg-green-900' : ''}
+                  className={cn(
+                    "rounded-full transition-all duration-300 transform hover:scale-105",
+                    selectedCategory === category 
+                      ? 'bg-green-800 hover:bg-green-900 shadow-lg' 
+                      : 'hover:border-green-400 hover:text-green-800'
+                  )}
                 >
                   {category}
                 </Button>
@@ -116,29 +123,52 @@ const Blog: React.FC = () => {
           {/* Blog Posts Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPosts.map((post) => (
-              <Card key={post.id} className="hover:shadow-lg transition-shadow cursor-pointer">
-                <div className="aspect-video bg-gray-200 rounded-t-lg"></div>
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-2">
-                    <Badge variant="secondary" className="bg-green-100 text-green-800">
+              <Card 
+                key={post.id} 
+                className="group overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer bg-white/60 backdrop-blur-sm"
+              >
+                <div className="aspect-video bg-gradient-to-br from-green-100 to-yellow-100 rounded-t-lg relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-600/20 to-yellow-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute top-4 right-4">
+                    <Badge 
+                      variant="secondary" 
+                      className="bg-white/90 backdrop-blur-sm text-green-800 shadow-lg"
+                    >
                       {post.category}
                     </Badge>
-                    <span className="text-sm text-gray-500">{post.readTime}</span>
                   </div>
-                  <CardTitle className="text-xl hover:text-green-800 transition-colors">
+                  <div className="absolute bottom-4 right-4">
+                    <Badge variant="secondary" className="bg-white/90 backdrop-blur-sm">
+                      <BookOpen className="w-3 h-3 mr-1" />
+                      {post.readTime}
+                    </Badge>
+                  </div>
+                </div>
+                <CardHeader>
+                  <CardTitle className="text-xl group-hover:text-green-800 transition-colors leading-tight">
                     {post.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-4">{post.excerpt}</p>
-                  <div className="flex items-center text-sm text-gray-500 space-x-4">
-                    <div className="flex items-center space-x-1">
-                      <User className="h-4 w-4" />
-                      <span>{post.author}</span>
+                <CardContent className="space-y-4">
+                  <p className="text-gray-600 line-clamp-2 group-hover:text-gray-700 transition-colors">
+                    {post.excerpt}
+                  </p>
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
+                        <User className="h-4 w-4 text-green-800" />
+                      </div>
+                      <span className="text-sm font-medium text-gray-700">{post.author}</span>
                     </div>
-                    <div className="flex items-center space-x-1">
-                      <Calendar className="h-4 w-4" />
-                      <span>{new Date(post.date).toLocaleDateString()}</span>
+                    <div className="flex items-center text-sm text-gray-500">
+                      <Calendar className="h-4 w-4 mr-1" />
+                      <time dateTime={post.date}>
+                        {new Date(post.date).toLocaleDateString('en-US', {
+                          month: 'short',
+                          day: 'numeric',
+                          year: 'numeric'
+                        })}
+                      </time>
                     </div>
                   </div>
                 </CardContent>
@@ -147,9 +177,27 @@ const Blog: React.FC = () => {
           </div>
 
           {filteredPosts.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-gray-500">No articles found matching your search.</p>
-            </div>
+            <Card className="py-16 text-center bg-white/60 backdrop-blur-sm">
+              <CardContent>
+                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-yellow-100 flex items-center justify-center">
+                  <Search className="w-8 h-8 text-yellow-600" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">No Articles Found</h3>
+                <p className="text-gray-600 mb-6">
+                  We couldn't find any articles matching your search. Try adjusting your filters or search terms.
+                </p>
+                <Button 
+                  variant="outline" 
+                  onClick={() => {
+                    setSearchTerm('');
+                    setSelectedCategory('All');
+                  }}
+                  className="hover:border-green-400 hover:text-green-800"
+                >
+                  Clear Filters
+                </Button>
+              </CardContent>
+            </Card>
           )}
         </div>
       </main>
